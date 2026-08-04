@@ -32,6 +32,19 @@ The analysis evaluates building energy performance, isolates an unmonitored oper
   
 ![Daily Electricity Import](plots/Daily_Electricity_Import.png)
 
+```text
+Executive Performance Summary: Control Anomaly Impact
+Performance Metric              Pre-Anomaly Baseline  Post-Anomaly Period  Absolute Shift  Impact / Variance
+Unoccupied Mean Demand (kW)     82.22 kW              131.89 kW            +49.67 kW       +60.4% baseload increase
+Occupied Mean Demand (kW)       143.33 kW             183.04 kW            +39.71 kW       +27.7% load increase
+Average Power Factor            0.938                 0.893                -0.045          -4.8% Inductive motor load degradation
+Daily Excess Energy Shift       ——                    ——                   +1,119.5 kWh/day Occupancy-adjusted daily excess
+Effective Electricity Rate      ——                    £0.1894 / kWh        ——              Post-anomaly weighted average
+Daily Financial Burn Rate       ——                    ——                   +£211.99/day    Ongoing daily financial loss
+Total Excess Consumption        ——                    ——                   190,311.37 kWh  Cumulative extra energy
+Direct Financial Cost of Fault  ——                    ——                   £36,038.18      Cumulative financial impact
+```
+
 ### 2. Weather Normalization Analysis
 * Year 2 was 10.9% milder in heating degree days ($\text{HDD}_{15.5} = 1,851.9$ vs $2,079.0$).
 * An OLS regression model trained on Year 1 baseline data ($R^2 = 0.682$) projected an expected Year 2 consumption of **981,203 kWh**.
@@ -114,18 +127,15 @@ Launch the pipeline instantly in your browser with zero setup:
 ## 📁 Repository Structure
 
 ```text
+├── building_energy_performance_analytics.ipynb # Interactive Google Colab Notebook
 ├── energy_dataset.xlsx      # Raw synthetic half-hourly dataset
-├── building_energy_performance_analytics.ipynb # Baseload jump & fault quantification, Degree-day OLS regression model, ToU band analysis & cost waterfall, kVA limit breaches & PFC proof, Financial cashflow & Gantt schedule
-├── requirements.txt                            # Python dependencies
-├── README.md                                   # Executive summary & documentation
+├── requirements.txt         # Python dependencies
+├── README.md                # Executive summary & documentation
 ├── plots/
-    ├── daily_consumption_trend.png
-    ├── baseload_and_power_factor.png
-    ├── weather_normalization_comparison.png
-    ├── peak_kva_vs_capacity.png
-    ├── cost_decomposition_waterfall.png
-    ├── kw_vs_kva_power_factor_scatter.png
-    └── cumulative_cashflow_projection.png
+    ├── Daily_Electricity_Import.png
+    ├── Monthly_Peak_kVA_Demand_vs_Agreed_Import_Capacity.png
+    ├── Active_Power_(kW)_vs._Apparent_Power_(kVA)_&_Power_Factor_Boundaries.png
+    ├── Average_Diurnal_Power_Factor_Profile_(Pre-_vs._Post-Jan_12,_2026).png
 ```
 
 ---
