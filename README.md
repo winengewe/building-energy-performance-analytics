@@ -17,7 +17,7 @@ The analysis evaluates building energy performance, isolates an unmonitored oper
 | **Total Import Volume** | 990,104 kWh | 1,072,975 kWh | **+8.37%** (+82,871 kWh) |
 | **Total Spend** | £186,038 | £215,663 | **+15.92%** (+£29,625) |
 | **Weather-Expected Volume** | 990,104 kWh | 981,203 kWh | **+9.35%** Weather-Adj. Shift (+91,772 kWh) |
-| **Unoccupied Mean Load** | 93.95 kW | 105.33 kW | **+12.11%** (+60.4% post-Jan 12 fault) |
+| **Unoccupied Mean Load** | 93.95 kW | 105.33 kW | **+12.12%** (+60.4% post-Jan 12 fault) |
 | **Peak Demand (kVA)** | 303.21 kVA | 343.79 kVA | **+13.38%** (11 breaches >320 kVA limit) |
 | **Average Power Factor** | 0.938 | 0.917 | **-2.24%** (dipped to 0.855 min) |
 
