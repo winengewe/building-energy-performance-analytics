@@ -29,6 +29,8 @@ The analysis evaluates building energy performance, isolates an unmonitored oper
 * **Step-Change Identification**: The site was operating **8.98% more efficiently** in Year 2 until **Monday, January 12, 2026**, when a control override/setback failure occurred.
 * **Unoccupied Baseload Jump**: Overnight and weekend baseline demand stepped up from **82.22 kW** to **131.89 kW** (+49.67 kW continuous excess load).
 * **Direct Financial Loss**: Incurred **190,311 kWh** in excess consumption and **£36,038** in unnecessary energy cost across 5.5 months. Rectifying this fault yields **£36,000–£72,000/year** in recurring savings.
+  
+![Daily Electricity Import](plots/Daily_Electricity_Import.png)
 
 ### 2. Weather Normalization Analysis
 * Year 2 was 10.9% milder in heating degree days ($\text{HDD}_{15.5} = 1,851.9$ vs $2,079.0$).
@@ -87,10 +89,10 @@ Launch the pipeline instantly in your browser with zero setup:
 ---
 ## 🛠️ Tech Stack & Requirements
 * Python 3.9+
-* Data Processing: pandas, numpy
-* Statistical Modeling: statsmodels (OLS Regression)
-* Visualization: matplotlib, seaborn
-* Spreadsheet Ingestion: openpyxl
+* Data Processing: `pandas`, `numpy`
+* Statistical Modeling: `statsmodels` (OLS Regression)
+* Visualization: `matplotlib`, `seaborn`
+* Spreadsheet Ingestion: `openpyxl`
 ---
 ## 📝 License
 Distributed under the MIT License. See `LICENSE` for details.
