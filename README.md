@@ -37,16 +37,58 @@ The analysis evaluates building energy performance, isolates an unmonitored oper
 * An OLS regression model trained on Year 1 baseline data ($R^2 = 0.682$) projected an expected Year 2 consumption of **981,203 kWh**.
 * The true weather-normalized operational deterioration was **+91,772 kWh (+9.35%)**, confirming that efficiency loss was driven by internal control failures rather than weather dynamics.
 
+```text
+Ordinary Least Squares (OLS) regression model
+
+=================== 1. MODEL VALIDATION ===================
+R-squared                 : 0.6819  (Target: >0.75)
+CV(RMSE)                  : 8.42%    (Target: <15.0%)
+NMBE                      : -0.00%     (Target: +/- 5.0%)
+
+================== 2. MODEL COEFFICIENTS ==================
+Base Load (Intercept)     : 2064.80 kWh/day (p=0.000)
+Heating Sensitivity (HDD) : 33.30 kWh/HDD (p=0.000)
+Cooling Sensitivity (CDD) : 51.29 kWh/CDD (p=0.016)
+Workday Added Load        : 634.92 kWh/day (p=0.000)
+
+=================== 3. DECOMPOSED IMPACT ===================
+Actual Year 1 Total       : 990,104.36 kWh
+Expected Year 2 Total     : 981,203.28 kWh  (Baseline Model + Y2 Weather)
+Actual Year 2 Total       : 1,072,975.33 kWh
+------------------------------------------------------------------------------------------------------------------------------------
+  └─ Weather Impact (expected_y2 - actual_y1)                                     : -8,901.07 kWh (Expected reduction)
+  └─ Weather-Normalized / Non-Weather Operational Shift (actual_y2 - expected_y2) : +91,772.05 kWh (+9.35%) True efficiency loss
+  └─ Total Raw Change (weather_impact + operational_shift)                        : +82,870.98 kWh (+8.37%)
+```
+
 ### 3. Tariff & Cost Decomposition
 * The +£29,625 (+15.92%) annual spend increase was mathematically decomposed into:
   1. **Unit Rate Inflation**: **+£12,014 (+6.46%)** from ToU rate increases across Red, Amber, and Green bands.
   2. **Volume Growth**: **+£16,523 (+8.88%)** driven by the post-Jan 12 control fault.
-  3. **Capacity Charges**: **+£1,088 (+0.59%)** from higher agreed capacity rates (£0.095 $\rightarrow$ £0.105/kVA/day) and kVA exceedance penalties.
+  3. **Capacity Charges**: **+£1,088 (+0.58%)** from higher agreed capacity rates (£0.095 $\rightarrow$ £0.105/kVA/day) and kVA exceedance penalties.
+ 
+```text
+=== ANNUAL COST COMPONENTS BREAKDOWN ===
+period_year                   energy_import_cost  allocated_capacity_charge  excess_capacity_charge  total_cost
+0 Year 1 (Jul 24 - Jun 25)           £174,655.30                 £11,382.82                   £0.00 £186,038.12
+1 Year 2 (Jul 25 - Jun 26)           £203,192.36                 £12,469.30                   £1.78 £215,663.44
+
+=== COST VARIANCE & INFLATION DECOMPOSITION ===
+Year 1 Total Spend:            £186,038.12
+  + Unit Rate Inflation Effect:  +£12,013.88 (+6.46%)
+  + Volume Increase Effect:      +£16,523.18 (+8.88%)
+  + Capacity Charge Increase:    +£1,088.26 (+0.58%)
+Year 2 Total Spend:            £215,663.44 (+15.92%)
+```
 
 ### 4. Power Factor Correction & Capacity Limits
 * The facility experienced **11 half-hourly capacity exceedances** exceeding the **320 kVA Agreed Import Capacity** (peaking at 343.79 kVA).
 * Real active power ($303.50\text{ kW}$) never exceeded 320 kW. All exceedances were caused by degraded power factor ($\text{PF} \approx 0.855\text{--}0.898$) during morning plant restart windows (08:00–09:30).
 * **Corrective Proof**: Restoring site power factor to $\ge 0.95$ via a 60 kVAR capacitor bank reduces peak apparent power to $319.47\text{ kVA}$, completely eliminating **100% of capacity exceedances** without requiring load curtailment.
+
+![Monthly_Peak_kVA_Demand_vs_Agreed_Import_Capacity](plots/Monthly_Peak_kVA_Demand_vs_Agreed_Import_Capacity.png)
+![Active_Power_(kW)_vs._Apparent_Power_(kVA)_&_Power_Factor_Boundaries](plots/Active_Power_(kW)_vs._Apparent_Power_(kVA)_&_Power_Factor_Boundaries.png)
+![Average_Diurnal_Power_Factor_Profile_(Pre-_vs._Post-Jan_12,_2026)](plots/Average_Diurnal_Power_Factor_Profile_(Pre-_vs._Post-Jan_12,_2026).png)
 
 ---
 
