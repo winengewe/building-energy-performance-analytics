@@ -71,7 +71,7 @@ Launch the pipeline instantly in your browser with zero setup:
 
 ```text
 ├── energy_dataset.xlsx      # Raw synthetic half-hourly dataset
-├── building-energy-performance-analytics.ipynb # Baseload jump & fault quantification, Degree-day OLS regression model, ToU band analysis & cost waterfall, kVA limit breaches & PFC proof, Financial cashflow & Gantt schedule
+├── building_energy_performance_analytics.ipynb # Baseload jump & fault quantification, Degree-day OLS regression model, ToU band analysis & cost waterfall, kVA limit breaches & PFC proof, Financial cashflow & Gantt schedule
 ├── requirements.txt (tbc)                      # Python dependencies
 ├── README.md                                   # Executive summary & documentation
 ├── plots/
